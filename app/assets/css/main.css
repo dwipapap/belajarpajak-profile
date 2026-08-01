@@ -1,18 +1,73 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+/**
+ * Brand tokens sampled from COMPANY PROFILE PT. KBS 2026.pdf.
+ * Steps marked "sampled" are literal PDF colors — do not retune them without re-sampling.
+ * See DESIGN.md §1.
+ */
 @theme static {
-  --font-sans: 'Public Sans', sans-serif;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  /* Brand blue. 200/300/400/600/700/900 are sampled from the PDF. */
+  --color-kbs-50: oklch(97.5% 0.008 265);
+  --color-kbs-100: oklch(94% 0.016 266.3);
+  --color-kbs-200: oklch(87.6% 0.0276 267.5);
+  --color-kbs-300: oklch(79.6% 0.0477 267.8);
+  --color-kbs-400: oklch(59% 0.1017 266.3);
+  --color-kbs-500: oklch(49% 0.135 265);
+  --color-kbs-600: oklch(41.4% 0.1529 264);
+  --color-kbs-700: oklch(35% 0.086 265);
+  --color-kbs-800: oklch(30.5% 0.13 262);
+  --color-kbs-900: oklch(26.9% 0.1196 261.4);
+  --color-kbs-950: oklch(20% 0.09 261);
+
+  /* Accent only — markers, rules, the logo's stars. Never a text color. */
+  --color-gold-50: oklch(98% 0.02 96);
+  --color-gold-100: oklch(96% 0.05 96);
+  --color-gold-200: oklch(93.5% 0.1 96);
+  --color-gold-300: oklch(91% 0.145 96);
+  --color-gold-400: oklch(88.9% 0.1827 95.8);
+  --color-gold-500: oklch(81.9% 0.1505 92.4);
+  --color-gold-600: oklch(72% 0.135 92);
+  --color-gold-700: oklch(60% 0.115 91);
+  --color-gold-800: oklch(49% 0.095 90);
+  --color-gold-900: oklch(41% 0.08 90);
+  --color-gold-950: oklch(28% 0.06 90);
+
+  /* Tinted paper + ink. Spec §5: no pure white, no pure black. */
+  --color-paper: oklch(98.6% 0.004 265);
+  --color-ink: oklch(24.2% 0.0076 182.3);
+}
+
+:root {
+  /* Nuxt UI defaults primary to step 500; the deck's blue is step 600. */
+  --ui-primary: var(--color-kbs-600);
+  --ui-bg: var(--color-paper);
+  --ui-text-highlighted: var(--color-ink);
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll-reveal primitive for section entrances (DESIGN.md §3). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Sticky nav is 4rem tall — keep anchor targets clear of it. */
+[id] {
+  scroll-margin-top: 5rem;
 }

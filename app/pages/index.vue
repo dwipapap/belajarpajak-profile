@@ -1,76 +1,47 @@
+<script setup lang="ts">
+/**
+ * Unit 0 delivers the shell only: every homepage anchor exists and the sticky nav
+ * resolves to it. Each placeholder below is replaced wholesale by its own unit —
+ * see planning/kbs-profile-site-spec.md §7.
+ */
+const sections = [
+  { id: 'beranda', title: 'Hero', unit: 'Unit 1' },
+  { id: 'tentang', title: 'Tentang Kami', unit: 'Unit 1' },
+  { id: 'visi-misi', title: 'Visi & Misi', unit: 'Unit 8' },
+  { id: 'layanan', title: 'Layanan', unit: 'Unit 3' },
+  { id: 'tim', title: 'Tim & Manajemen', unit: 'Unit 5' },
+  { id: 'legalitas', title: 'Legalitas', unit: 'Unit 4' },
+  { id: 'klien', title: 'Klien', unit: 'Unit 6' },
+  { id: 'testimoni', title: 'Testimoni', unit: 'Unit 7' },
+  { id: 'kontak', title: 'Kontak', unit: 'Unit 2' }
+]
+</script>
+
 <template>
   <div>
-    <UPageHero
-      title="Nuxt Starter Template"
-      description="A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours."
-      :links="[{
-        label: 'Get started',
-        to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt',
-        target: '_blank',
-        trailingIcon: 'i-lucide-arrow-right',
-        size: 'xl'
-      }, {
-        label: 'Use this template',
-        to: 'https://github.com/nuxt-ui-templates/starter',
-        target: '_blank',
-        icon: 'i-simple-icons-github',
-        size: 'xl',
-        color: 'neutral',
-        variant: 'subtle'
-      }]"
-    />
+    <section
+      v-for="(section, index) in sections"
+      :id="section.id"
+      :key="section.id"
+      v-reveal
+      :class="index % 2 === 1 ? 'bg-kbs-50' : 'bg-paper'"
+    >
+      <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+        <p class="text-sm font-semibold uppercase tracking-wide text-kbs-600">
+          {{ section.unit }}
+        </p>
 
-    <UPageSection
-      id="features"
-      title="Everything you need to build modern Nuxt apps"
-      description="Start with a solid foundation. This template includes all the essentials for building production-ready applications with Nuxt UI's powerful component system."
-      :features="[{
-        icon: 'i-lucide-rocket',
-        title: 'Production-ready from day one',
-        description: 'Pre-configured with TypeScript, ESLint, Tailwind CSS, and all the best practices. Focus on building features, not setting up tooling.'
-      }, {
-        icon: 'i-lucide-palette',
-        title: 'Beautiful by default',
-        description: 'Leveraging Nuxt UI\'s design system with automatic dark mode, consistent spacing, and polished components that look great out of the box.'
-      }, {
-        icon: 'i-lucide-zap',
-        title: 'Lightning fast',
-        description: 'Optimized for performance with SSR/SSG support, automatic code splitting, and edge-ready deployment. Your users will love the speed.'
-      }, {
-        icon: 'i-lucide-blocks',
-        title: '100+ components included',
-        description: 'Access Nuxt UI\'s comprehensive component library. From forms to navigation, everything is accessible, responsive, and customizable.'
-      }, {
-        icon: 'i-lucide-code-2',
-        title: 'Developer experience first',
-        description: 'Auto-imports, hot module replacement, and TypeScript support. Write less boilerplate and ship more features.'
-      }, {
-        icon: 'i-lucide-shield-check',
-        title: 'Built for scale',
-        description: 'Enterprise-ready architecture with proper error handling, SEO optimization, and security best practices built-in.'
-      }]"
-    />
+        <h2 class="mt-2 text-3xl font-bold tracking-tight text-ink md:text-4xl">
+          {{ section.title }}
+        </h2>
 
-    <UPageSection>
-      <UPageCTA
-        title="Ready to build your next Nuxt app?"
-        description="Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today."
-        variant="subtle"
-        :links="[{
-          label: 'Start building',
-          to: 'https://ui.nuxt.com/docs/getting-started/installation/nuxt',
-          target: '_blank',
-          trailingIcon: 'i-lucide-arrow-right',
-          color: 'neutral'
-        }, {
-          label: 'View on GitHub',
-          to: 'https://github.com/nuxt-ui-templates/starter',
-          target: '_blank',
-          icon: 'i-simple-icons-github',
-          color: 'neutral',
-          variant: 'outline'
-        }]"
-      />
-    </UPageSection>
+        <div class="mt-4 h-1 w-16 rounded-full bg-gold-400" />
+
+        <p class="mt-6 max-w-2xl leading-relaxed text-ink/70">
+          Bagian ini belum diisi. Konten diambil dari COMPANY PROFILE PT. KBS 2026.pdf
+          pada {{ section.unit }}.
+        </p>
+      </div>
+    </section>
   </div>
 </template>
