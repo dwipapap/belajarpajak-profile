@@ -29,3 +29,8 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      # Prerender is where the icon-bundle and directive gotchas surface
+      # (see CLAUDE.md) — lint/typecheck won't catch them.
+      - name: Build
+        run: npm run build

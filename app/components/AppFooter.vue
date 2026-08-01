@@ -37,6 +37,8 @@ const year = new Date().getFullYear()
             <li>
               <a
                 :href="LMS_URL"
+                target="_blank"
+                rel="noopener"
                 class="text-kbs-200 transition-colors hover:text-gold-400"
               >
                 Belajar Pajak (LMS)

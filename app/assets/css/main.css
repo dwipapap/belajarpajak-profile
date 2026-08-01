@@ -47,10 +47,6 @@
   --ui-text-highlighted: var(--color-ink);
 }
 
-.dark {
-  --ui-primary: var(--color-kbs-400);
-}
-
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
