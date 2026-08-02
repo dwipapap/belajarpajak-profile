@@ -73,7 +73,7 @@ const founder = {
                 class="mx-auto size-40 rounded-full object-cover ring-4 ring-paper"
               >
 
-              <figcaption class="mt-5">
+              <div class="mt-5">
                 <p class="text-lg font-semibold text-kbs-600">
                   {{ founder.name }}
                 </p>
@@ -81,7 +81,7 @@ const founder = {
                 <p class="mt-1 text-sm text-ink/60">
                   {{ founder.role }}
                 </p>
-              </figcaption>
+              </div>
             </div>
           </figure>
         </div>
