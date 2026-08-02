@@ -18,6 +18,12 @@ logs
 .fleet
 .idea
 
+# Local agent tooling (skills live outside the repo)
+.agents
+.claude
+opencode.json
+skills-lock.json
+
 # Local env files
 .env
 .env.*
