@@ -1,12 +1,10 @@
 <script setup lang="ts">
 /**
- * Unit 0 delivers the shell only: every homepage anchor exists and the sticky nav
- * resolves to it. Each placeholder below is replaced wholesale by its own unit —
- * see planning/kbs-profile-site-spec.md §7.
+ * Unit 1 delivers Hero + Tentang. The remaining anchors stay placeholders until their
+ * own unit replaces them — see planning/kbs-profile-site-spec.md §7. Tentang closes on
+ * `bg-paper`, so the alternation below starts on `bg-kbs-50`.
  */
 const sections = [
-  { id: 'beranda', title: 'Hero', unit: 'Unit 1' },
-  { id: 'tentang', title: 'Tentang Kami', unit: 'Unit 1' },
   { id: 'visi-misi', title: 'Visi & Misi', unit: 'Unit 8' },
   { id: 'layanan', title: 'Layanan', unit: 'Unit 3' },
   { id: 'tim', title: 'Tim & Manajemen', unit: 'Unit 5' },
@@ -19,12 +17,16 @@ const sections = [
 
 <template>
   <div>
+    <HeroSection />
+
+    <AboutSection />
+
     <section
       v-for="(section, index) in sections"
       :id="section.id"
       :key="section.id"
       v-reveal
-      :class="index % 2 === 1 ? 'bg-kbs-50' : 'bg-paper'"
+      :class="index % 2 === 0 ? 'bg-kbs-50' : 'bg-paper'"
     >
       <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
         <p class="text-sm font-semibold uppercase tracking-wide text-kbs-600">
