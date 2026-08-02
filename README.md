@@ -1,64 +1,51 @@
-# Nuxt Starter Template
+# PT. Konsultan Bisnis Sudarno — Company Profile Site
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Static company-profile site for **PT. Konsultan Bisnis Sudarno** (Pekanbaru tax
+consulting firm). Build spec: `planning/kbs-profile-site-spec.md`. Design tokens:
+`DESIGN.md`.
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+## Stack
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
-
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
-
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
-```
-
-## Deploy your own
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+Nuxt 4 + Nuxt UI 4, TypeScript, Tailwind v4, npm.
 
 ## Setup
 
-Make sure to install the dependencies:
-
 ```bash
-pnpm install
+npm install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## Development
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
-## Production
+Start the dev server on http://localhost:3000.
 
-Build the application for production:
+## Quality gates
 
 ```bash
-pnpm build
+npm run lint       # must pass before every commit
+npm run typecheck
+npm run test       # unit tests for company utils
+npm run build      # prerenders every route (SSG)
 ```
 
-Locally preview production build:
+## Content
 
-```bash
-pnpm preview
-```
+Content comes from `COMPANY PROFILE PT. KBS 2026.pdf` via the transcript at
+`planning/company-profile.md`. Nothing is invented — no fabricated credentials,
+client names, testimonials, or statistics. UI copy is Bahasa Indonesia.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Company facts (address, e-mail, WhatsApp numbers, nav links) live in one place:
+`app/utils/company.ts`.
 
-## Renovate integration
+## Deploy
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+- `npm run build` prerenders all routes to static HTML.
+- `npm run preview` serves the production build locally.
+- Host anywhere static (Vercel / Netlify / Cloudflare Pages / Nginx).
+
+## Branching
+
+One branch + PR per unit, in spec §7 order. See `planning/kbs-profile-site-spec.md`.
