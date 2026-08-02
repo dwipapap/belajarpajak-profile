@@ -31,6 +31,23 @@ export const ADDRESS_LINES = [
   'Kota Pekanbaru, Riau 28294'
 ] as const
 
+/** One-line form of the canonical address — Maps queries and (later) JSON-LD. */
+export const ADDRESS_ONE_LINE = ADDRESS_LINES.join(', ')
+
+/**
+ * Google Maps targets for Kontak.
+ *
+ * TODO: the PDF carries no coordinates and no Google Business Profile link, so these
+ * resolve the street rather than the office door. Ask the client for the exact pin
+ * (or a Business Profile URL) and replace the query with a place ID / lat,lng.
+ */
+export const MAPS_LINK
+  = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS_ONE_LINE)}`
+
+/** `output=embed` renders the same query in an iframe without needing a Maps API key. */
+export const MAPS_EMBED_LINK
+  = `https://www.google.com/maps?q=${encodeURIComponent(ADDRESS_ONE_LINE)}&output=embed`
+
 /** Spec §4: Pringgo's line is the primary number behind the float button and every CTA. */
 export const CONTACTS = [
   { name: 'Pringgo', phone: '+62 822-8948-7779', primary: true },

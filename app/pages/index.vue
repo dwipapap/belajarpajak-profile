@@ -1,8 +1,9 @@
 <script setup lang="ts">
 /**
- * Unit 1 delivers Hero + Tentang. The remaining anchors stay placeholders until their
- * own unit replaces them — see planning/kbs-profile-site-spec.md §7. Tentang closes on
- * `bg-paper`, so the alternation below starts on `bg-kbs-50`.
+ * Hero + Tentang (Unit 1) and Kontak (Unit 2) are built; the anchors between them stay
+ * placeholders until their own unit replaces them — see planning/kbs-profile-site-spec.md §7.
+ * Tentang closes on `bg-paper`, so the alternation below starts on `bg-kbs-50` and ends on
+ * `bg-paper` (Testimoni) — which is why Kontak opens on `bg-kbs-50`.
  */
 const sections = [
   { id: 'visi-misi', title: 'Visi & Misi', unit: 'Unit 8' },
@@ -10,8 +11,7 @@ const sections = [
   { id: 'tim', title: 'Tim & Manajemen', unit: 'Unit 5' },
   { id: 'legalitas', title: 'Legalitas', unit: 'Unit 4' },
   { id: 'klien', title: 'Klien', unit: 'Unit 6' },
-  { id: 'testimoni', title: 'Testimoni', unit: 'Unit 7' },
-  { id: 'kontak', title: 'Kontak', unit: 'Unit 2' }
+  { id: 'testimoni', title: 'Testimoni', unit: 'Unit 7' }
 ]
 </script>
 
@@ -45,5 +45,7 @@ const sections = [
         </p>
       </div>
     </section>
+
+    <ContactSection />
   </div>
 </template>
