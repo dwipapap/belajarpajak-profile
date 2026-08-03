@@ -9,6 +9,7 @@
  */
 import { LEGALITY_PATH } from './legality'
 import { SERVICES_PATH } from './services'
+import { TEAM_PATH } from './team'
 
 export const COMPANY = {
   legalName: 'PT. Konsultan Bisnis Sudarno',
@@ -69,13 +70,14 @@ export function whatsappLink(phone: string = PRIMARY_WHATSAPP.phone, message: st
 }
 
 // The detail-route paths live with their unit data; the nav reuses them so the literal
-// exists once (services.ts SERVICES_PATH, legality.ts LEGALITY_PATH).
+// exists once (services.ts SERVICES_PATH, legality.ts LEGALITY_PATH, team.ts TEAM_PATH).
 export const NAV_LINKS = [
   { label: 'Beranda', to: '/#beranda' },
   { label: 'Tentang', to: '/#tentang' },
   // The catalog page, not the homepage summary — spec §3 breaks it out for SEO.
   { label: 'Layanan', to: SERVICES_PATH },
-  { label: 'Tim', to: '/#tim' },
+  // The full roster, not the homepage showcase — same split as Layanan.
+  { label: 'Tim', to: TEAM_PATH },
   // The detail page, not the homepage key points — same split as Layanan.
   { label: 'Legalitas', to: LEGALITY_PATH },
   { label: 'Kontak', to: '/#kontak' }

@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/layanan', '/legalitas'],
+      routes: ['/', '/layanan', '/legalitas', '/tim'],
       // /artikel is reserved but unbuilt (spec §8) — nothing should emit a blank page for it.
       ignore: ['/artikel']
     }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /**
- * Hero + Tentang (Unit 1), Layanan (Unit 3), Legalitas (Unit 4) and Kontak (Unit 2) are
- * built; the anchors around them stay placeholders until their own unit replaces them —
- * see planning/kbs-profile-site-spec.md §7.
+ * Hero + Tentang (Unit 1), Kontak (Unit 2), Layanan (Unit 3), Legalitas (Unit 4) and
+ * Tim (Unit 5) are built; the anchors around them stay in place until their own unit
+ * replaces them — see planning/kbs-profile-site-spec.md §7.
  *
  * Sections alternate paper / kbs-50 down the page. Tentang closes on `bg-paper` and
  * Layanan is `bg-paper` too, so the placeholders carry the background that keeps the
@@ -11,10 +11,6 @@
  */
 const beforeLayanan = [
   { id: 'visi-misi', title: 'Visi & Misi', unit: 'Unit 8', background: 'bg-kbs-50' }
-]
-
-const beforeLegalitas = [
-  { id: 'tim', title: 'Tim & Manajemen', unit: 'Unit 5', background: 'bg-kbs-50' }
 ]
 
 const afterLegalitas = [
@@ -37,11 +33,7 @@ const afterLegalitas = [
 
     <ServicesSection />
 
-    <SectionPlaceholder
-      v-for="section in beforeLegalitas"
-      :key="section.id"
-      v-bind="section"
-    />
+    <TeamSection />
 
     <LegalitySection />
 
