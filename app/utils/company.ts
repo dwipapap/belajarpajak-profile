@@ -69,8 +69,8 @@ export function whatsappLink(phone: string = PRIMARY_WHATSAPP.phone, message: st
 export const NAV_LINKS = [
   { label: 'Beranda', to: '/#beranda' },
   { label: 'Tentang', to: '/#tentang' },
-  // TODO(Unit 3): repoint to the standalone '/layanan' catalog page once it exists.
-  { label: 'Layanan', to: '/#layanan' },
+  // The catalog page, not the homepage summary — spec §3 breaks it out for SEO.
+  { label: 'Layanan', to: '/layanan' },
   { label: 'Tim', to: '/#tim' },
   { label: 'Legalitas', to: '/#legalitas' },
   { label: 'Kontak', to: '/#kontak' }

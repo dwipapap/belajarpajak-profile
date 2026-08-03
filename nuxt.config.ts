@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', '/layanan'],
       // /artikel is reserved but unbuilt (spec §8) — nothing should emit a blank page for it.
       ignore: ['/artikel']
     }
@@ -60,7 +60,12 @@ export default defineNuxtConfig({
   icon: {
     mode: 'svg',
     clientBundle: {
-      scan: true
+      // The scanner's default globs stop at .vue/.jsx/.tsx/.md/.yml, so icon names held
+      // in a data file (app/utils/services.ts) are invisible to it and prerender as empty
+      // <svg>. Adding .ts keeps the names next to the content they belong to.
+      scan: {
+        globInclude: ['**/*.{vue,jsx,tsx,ts,md,mdc,mdx,yml,yaml}']
+      }
     }
   }
 })
