@@ -7,6 +7,8 @@
  * for the site, Maps pin and structured data — decided 2026-08-01. The NPWP wording
  * stays verbatim in the Legalitas section (Unit 4) because it quotes a legal document.
  */
+import { LEGALITY_PATH } from './legality'
+import { SERVICES_PATH } from './services'
 
 export const COMPANY = {
   legalName: 'PT. Konsultan Bisnis Sudarno',
@@ -66,13 +68,16 @@ export function whatsappLink(phone: string = PRIMARY_WHATSAPP.phone, message: st
   return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
 }
 
+// The detail-route paths live with their unit data; the nav reuses them so the literal
+// exists once (services.ts SERVICES_PATH, legality.ts LEGALITY_PATH).
 export const NAV_LINKS = [
   { label: 'Beranda', to: '/#beranda' },
   { label: 'Tentang', to: '/#tentang' },
   // The catalog page, not the homepage summary — spec §3 breaks it out for SEO.
-  { label: 'Layanan', to: '/layanan' },
+  { label: 'Layanan', to: SERVICES_PATH },
   { label: 'Tim', to: '/#tim' },
-  { label: 'Legalitas', to: '/#legalitas' },
+  // The detail page, not the homepage key points — same split as Layanan.
+  { label: 'Legalitas', to: LEGALITY_PATH },
   { label: 'Kontak', to: '/#kontak' }
 ] as const
 

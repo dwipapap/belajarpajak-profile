@@ -40,6 +40,7 @@ Single-page scroll with anchor nav; a couple of routes broken out for SEO.
 |---|---|
 | `/` | Hero → About → Visi/Misi → Layanan (summary) → Tim → Legalitas → Klien → Testimoni → Kontak |
 | `/layanan` | Full service catalog (8 groups) — better for SEO than a cramped homepage block |
+| `/legalitas` | Full legal record (registrations + certifications); the homepage keeps key points only |
 | `/artikel` | **Reserve the route + nav slot only. Build nothing.** (Out of scope — see §8) |
 
 Sticky top nav: Beranda · Tentang · Layanan · Tim · Legalitas · Kontak + a `Konsultasi` CTA button.
@@ -121,7 +122,8 @@ Corporate, trustworthy, conservative-modern. **Not** startup-flashy.
 - **Unit 1 — Hero + Tentang** (value prop, trust strip, history arc, founder).
 - **Unit 2 — Kontak** (WA numbers, email, address, contact form, Google Maps).
 - **Unit 3 — Layanan** (homepage 8 cards + `/layanan` full page — one shared data file, built together).
-- **Unit 4 — Legalitas** (NPWP/NIB/AHU + certifications).
+- **Unit 4 — Legalitas** (NPWP/NIB/AHU + Izin Praktik + certifications; homepage key-point
+  tiles + `/legalitas` detail page — one shared data file, built together).
 - **Unit 5 — Tim** (grouped hierarchy + photos).
 - **Unit 6 — Klien** (logo wall + client table).
 - **Unit 7 — Testimoni** (6 testimonials).
