@@ -65,7 +65,10 @@ own `<section>` and nothing else.
   precompiled set renders as an empty `<svg viewBox="0 0 16 16">` in the prerendered HTML —
   it silently fails at prerender time, not at runtime, so nothing turns red. If a new icon
   comes out blank, check that its name is a static string the scanner can see (a name built
-  at runtime is invisible to it).
+  at runtime is invisible to it). The scanner's *default* globs also stop at
+  `.vue/.jsx/.tsx/.md/.yml` — `.ts` is added in `nuxt.config.ts` so names living in data
+  files (`app/utils/services.ts`) still get bundled. Verify after a build:
+  `grep -c '<svg[^>]*></svg>' .output/public/**/index.html` must find nothing.
 - **Directives used in prerendered markup cannot be `.client`-only.** Vue's SSR renderer
   resolves every directive it meets; a missing one throws
   `Cannot read properties of undefined (reading 'getSSRProps')` and fails the whole route.
