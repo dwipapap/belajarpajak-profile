@@ -38,7 +38,7 @@ const badges = [
       class="absolute inset-0 -z-10 bg-gradient-to-b from-kbs-950/92 via-kbs-900/82 to-kbs-950/92 md:bg-gradient-to-r md:from-kbs-950/95 md:via-kbs-900/85 md:to-kbs-900/60"
     />
 
-    <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28 lg:px-8 lg:py-36">
+    <div class="mx-auto max-w-6xl px-4 pt-36 pb-20 sm:px-6 md:pt-44 md:pb-28 lg:px-8 lg:pt-52 lg:pb-36">
       <div class="max-w-2xl">
         <p class="text-sm font-semibold uppercase tracking-wide text-kbs-200">
           {{ COMPANY.legalName }}

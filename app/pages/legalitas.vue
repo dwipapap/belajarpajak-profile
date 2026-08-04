@@ -35,7 +35,7 @@ const breadcrumb: BreadcrumbItem[] = [
   <div>
     <!-- Page header. Dark band so the route reads as its own page under the light nav. -->
     <section class="bg-kbs-900">
-      <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+      <div class="mx-auto max-w-6xl px-4 pt-36 pb-14 sm:px-6 md:pt-44 md:pb-20 lg:px-8">
         <UBreadcrumb
           :items="breadcrumb"
           :ui="{

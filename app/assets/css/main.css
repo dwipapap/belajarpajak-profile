@@ -67,7 +67,7 @@ body {
   }
 }
 
-/* Sticky nav is 4rem tall — keep anchor targets clear of it. */
+/* Once scrolled, the nav floats 60px tall at a 2em offset — keep anchor targets clear of it. */
 [id] {
-  scroll-margin-top: 5rem;
+  scroll-margin-top: 7rem;
 }
