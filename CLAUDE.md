@@ -55,7 +55,10 @@ own `<section>` and nothing else.
 - Prefer Nuxt UI components over hand-rolled markup; brand via the `kbs`/`gold` ramps, never
   raw hex in a template (the one exception is WhatsApp's own `#25D366` in `WhatsAppFab.vue`).
 - Mobile-first: design the 375px column first. ID traffic is majority mobile.
-- Motion: `v-reveal` only. No parallax, no autoplay, no counters.
+- Motion: `v-reveal` only, with one exception — the `UMarquee` logo wall in `ClientSection`.
+  It is the site's only running animation and it stays that way: no parallax, no autoplay
+  carousel, no counters. Any running motion must be gated behind `motion-safe` and ship a
+  static stand-in for `prefers-reduced-motion`, as that section does.
 - ESLint is `@nuxt/eslint` with stylistic rules (no trailing commas, 1tbs braces).
 
 ## Gotchas already paid for
@@ -76,8 +79,14 @@ own `<section>` and nothing else.
 
 ## Known gaps
 
-- Client logos extracted from the PDF are small (down to 389×114); the logo wall (Unit 6) may
-  need higher-res originals from the client.
+- Three of the eighteen client logos are unusable as-is: `mitra-riau-perkasa-lestari` is a
+  scan of a brochure page rather than a logo, `reza-motor` is a photograph of a physical
+  signboard, and `homes` carries a black wedge from its source. Unit 6 needs real files for
+  those from the client. The rest are fine — the small ones were upscaled, not stretched.
+- Four more come off the deck on solid black (`tiki`, `sultan-resto`, `audi-variasi`,
+  `multi-guna-precast-mandiri`). They are compensated in the layer above: `dark: true` in
+  `app/utils/clients.ts` puts them on an ink tile so the seam disappears. Transparent-
+  background files from the client would remove the flag and the whole branch with it.
 - `sdntalenta@yahoo.com` is the PDF's e-mail. A branded inbox is a client decision, not a bug.
 - Contact-form delivery is undecided (spec §9). Default is a WhatsApp deep-link, which avoids
   UU PDP data-processing obligations entirely.
