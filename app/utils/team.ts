@@ -9,15 +9,13 @@
  *    caption, and carry the deck's full education / certification / expertise lists for the
  *    dossier at the bottom of `/tim`.
  *  - `MANAGERS` / `STAFF` — everyone else the deck lists. The deck gives these as name +
- *    role rows only: no credentials, no photos.
+ *    role rows only, so they carry a portrait but no credentials.
  *
  * `TEAM_SECTIONS` flattens all three groups into the shape `/tim` renders: one grid per
  * group, each with a brand label card.
  *
- * PHOTO GAP (CLAUDE.md): only the founder's photo is real. Everyone else runs on the
- * placeholder set, which holds 9 files for 17 people — faces therefore repeat on the same
- * page. The placeholders are stand-ins, never real people, and must all be swapped for
- * originals before launch. The name rendered is the data, not the file.
+ * Every one of the eighteen has a real portrait: cut out of its background, framed to a
+ * common head size, and shipped as a 4:5 transparent WebP in `public/team/`.
  */
 
 export interface TeamLeader {
