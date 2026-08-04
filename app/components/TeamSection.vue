@@ -20,9 +20,8 @@
  * The full roster lives on `/tim`, not here — the same summary/detail split `/layanan` and
  * `/legalitas` use. The CTA is the way in.
  *
- * Photos come from `TEAM_LEADERS` in `app/utils/team.ts`; only the founder's is real, the
- * rest are placeholders until high-res originals arrive (CLAUDE.md asset gap). The name
- * rendered is the data, never the placeholder file.
+ * Photos come from `TEAM_LEADERS` in `app/utils/team.ts` — real cut-out portraits for all
+ * of them. The name rendered is the data, never the file.
  */
 const activeId = ref<string | null>(null)
 
@@ -94,7 +93,7 @@ function setActive(id: string | null) {
             :alt="`Foto ${leader.name}`"
             loading="lazy"
             decoding="async"
-            class="absolute inset-0 size-full object-cover"
+            class="absolute inset-0 size-full object-cover object-top"
           >
 
           <!-- Caption bar: fades in only on the active panel. -->

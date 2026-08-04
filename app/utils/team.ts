@@ -25,19 +25,13 @@ export interface TeamLeader {
   role: string
   /** One line of the person's strongest credential(s), for the accordion caption. */
   credential: string
-  /** Public path to a photo (placeholder until real originals are collected). */
+  /** Public path to the cut-out portrait in `public/team/`. */
   photo: string
   /** Degrees, as the deck prints them. */
   education: readonly string[]
   certifications?: readonly string[]
   expertise?: readonly string[]
   experience?: readonly string[]
-}
-
-/** A name + role row, as the deck prints the Manajer and Tim tables. */
-export interface TeamRow {
-  name: string
-  title: string
 }
 
 /** What a `/tim` grid cell needs — leaders and rows normalised to one shape. */
@@ -60,27 +54,6 @@ export interface TeamSection {
   members: readonly TeamMember[]
 }
 
-/**
- * Stand-in portraits, in file order. Indices 0-3 belong to the leaders; the roster picks up
- * at index 4 and wraps. Assignment is index-based and never random — prerender has to emit
- * the same face on every build.
- */
-const PLACEHOLDER_PHOTOS = [
-  '/team/placeholder/Ninomae-Inanis_pr-img_03.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_04.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_05.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_06.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_07.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_08.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_09.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_10.webp',
-  '/team/placeholder/Ninomae-Inanis_pr-img_11.webp'
-] as const
-
-function placeholderPhoto(index: number) {
-  return PLACEHOLDER_PHOTOS[index % PLACEHOLDER_PHOTOS.length]!
-}
-
 /** Everyone given the showcase treatment. Order is the deck's own hierarchy. */
 export const TEAM_LEADERS: readonly TeamLeader[] = [
   {
@@ -88,7 +61,7 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
     name: 'Dr. Sudarno, S.Pd., M.M., BKP',
     role: 'Founder',
     credential: 'S3 Manajemen Keuangan · Universitas Brawijaya',
-    photo: '/team/founder-sudarno.webp',
+    photo: '/team/sudarno.webp',
     education: [
       'S3 Manajemen Keuangan, Universitas Brawijaya',
       'S2 Magister Manajemen Keuangan, Universitas Riau',
@@ -111,7 +84,7 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
     name: 'T. Arsono, S.E., MBA., LLM., BKP',
     role: 'Mitra PT. KBS',
     credential: 'International Tax Center — Leiden University',
-    photo: placeholderPhoto(0),
+    photo: '/team/arsono.webp',
     education: [
       'International Tax Center, Leiden University',
       'MA / LLM (Adv. Master) in European and International Tax Law, Inter-university '
@@ -130,7 +103,7 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
     name: 'Arih Dwi Prihastomo S, S.Aktr., M.M.',
     role: 'Direktur Utama',
     credential: 'S2 Manajemen — Institut Teknologi dan Bisnis Pelita Indonesia Pekanbaru',
-    photo: placeholderPhoto(1),
+    photo: '/team/arihdwi.webp',
     education: [
       'S2 Manajemen, Institut Teknologi dan Bisnis Pelita Indonesia Pekanbaru',
       'S1 Sarjana Aktuaria, Sekolah Tinggi Manajemen Risiko dan Asuransi'
@@ -146,7 +119,7 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
     name: 'M. Pringgo Prayetno, S.E., M.M., CTT',
     role: 'Direktur',
     credential: 'S2 Magister Manajemen — Universitas Sebelas Maret',
-    photo: placeholderPhoto(2),
+    photo: '/team/pringgo.webp',
     education: [
       'S2 Manajemen, Institut Teknologi dan Bisnis Pelita Indonesia Pekanbaru (Transfer)',
       'S2 Magister Manajemen, Universitas Sebelas Maret Surakarta',
@@ -163,7 +136,7 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
     name: 'Muhammad Ridwan, M.M.',
     role: 'Controller',
     credential: 'S2 Magister Manajemen — Universitas Lancang Kuning',
-    photo: placeholderPhoto(3),
+    photo: '/team/muhammadridwan.webp',
     education: [
       'S2 Magister Manajemen, Universitas Lancang Kuning Pekanbaru',
       'S1 FKIP, Universitas Riau'
@@ -181,30 +154,25 @@ export const TEAM_LEADERS: readonly TeamLeader[] = [
 ]
 
 /** The deck's "Manajer" table. */
-const MANAGERS: readonly TeamRow[] = [
-  { name: 'Hairudin, S.E., M.M., CPTT', title: 'Client & Policy Manager' },
-  { name: 'Ramli Aman, S.E., M.M', title: 'Office Manager' },
-  { name: 'Sri Budi Firman, S.E., M.M', title: 'Assistant Manager' },
-  { name: 'Marice Br. Hutahuruk, S.Pd., M.M', title: 'Finance & Accounting Manager' },
-  { name: 'Dr. Nicholas Renaldo, S.E., M.M., CHRTDS., CDMP., CHRM', title: 'Training & Research Manager' }
+const MANAGERS: readonly TeamMember[] = [
+  { name: 'Hairudin, S.E., M.M., CPTT', title: 'Client & Policy Manager', photo: '/team/hairudin.webp' },
+  { name: 'Ramli Aman, S.E., M.M', title: 'Office Manager', photo: '/team/ramli.webp' },
+  { name: 'Sri Budi Firman, S.E., M.M', title: 'Assistant Manager', photo: '/team/sribudifirman.webp' },
+  { name: 'Marice Br. Hutahuruk, S.Pd., M.M', title: 'Finance & Accounting Manager', photo: '/team/marice.webp' },
+  { name: 'Dr. Nicholas Renaldo, S.E., M.M., CHRTDS., CDMP., CHRM', title: 'Training & Research Manager', photo: '/team/nicholas.webp' }
 ]
 
 /** The deck's "Tim (Meet Our Team)" table. */
-const STAFF: readonly TeamRow[] = [
-  { name: 'Rahayu Purwaningsih, S.E., MM', title: 'Tax, Accounting & Marketing' },
-  { name: 'Desna Miarti, S.E', title: 'Tax & Finance' },
-  { name: 'Rokiyah, S.E., MM', title: 'Tax & Marketing' },
-  { name: 'M. Sayyid Akrimi, S.E., M.M', title: 'Tax, Accounting & Marketing' },
-  { name: 'Tekad Ridho Perbatas', title: 'Tax & Accounting' },
-  { name: 'Marvin Khewardana', title: 'Tax & Accounting' },
-  { name: 'Ilham Romadhona F, S.E', title: 'Tax, Accounting & Marketing' },
-  { name: 'Steven Valencia', title: 'Tax & Accounting' }
+const STAFF: readonly TeamMember[] = [
+  { name: 'Rahayu Purwaningsih, S.E., MM', title: 'Tax, Accounting & Marketing', photo: '/team/rahayu.webp' },
+  { name: 'Desna Miarti, S.E', title: 'Tax & Finance', photo: '/team/desnamiarti.webp' },
+  { name: 'Rokiyah, S.E., MM', title: 'Tax & Marketing', photo: '/team/rokiyah.webp' },
+  { name: 'M. Sayyid Akrimi, S.E., M.M', title: 'Tax, Accounting & Marketing', photo: '/team/sayyid.webp' },
+  { name: 'Tekad Ridho Perbatas', title: 'Tax & Accounting', photo: '/team/tekad.webp' },
+  { name: 'Marvin Khewardana', title: 'Tax & Accounting', photo: '/team/marvin.webp' },
+  { name: 'Ilham Romadhona F, S.E', title: 'Tax, Accounting & Marketing', photo: '/team/ilham.webp' },
+  { name: 'Steven Valencia', title: 'Tax & Accounting', photo: '/team/steven.webp' }
 ]
-
-/** Gives a photo-less row a stand-in, continuing the leaders' run through the set. */
-function withPhotos(rows: readonly TeamRow[], offset: number): readonly TeamMember[] {
-  return rows.map((row, index) => ({ ...row, photo: placeholderPhoto(offset + index) }))
-}
 
 /** The three grids on `/tim`, in the deck's hierarchy order. */
 export const TEAM_SECTIONS: readonly TeamSection[] = [
@@ -224,14 +192,14 @@ export const TEAM_SECTIONS: readonly TeamSection[] = [
     heading: 'Manajemen',
     eyebrow: 'Jajaran',
     label: 'Manajemen',
-    members: withPhotos(MANAGERS, 4)
+    members: MANAGERS
   },
   {
     id: 'tim-kami',
     heading: 'Tim Kami',
     eyebrow: 'Anggota',
     label: 'Tim Kami',
-    members: withPhotos(STAFF, 4 + MANAGERS.length)
+    members: STAFF
   }
 ]
 

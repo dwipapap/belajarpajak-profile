@@ -66,11 +66,11 @@ const founder = {
               <img
                 :src="founder.photo"
                 :alt="`Foto ${founder.name}`"
-                width="320"
-                height="320"
+                width="800"
+                height="1000"
                 loading="lazy"
                 decoding="async"
-                class="mx-auto size-40 rounded-full object-cover ring-4 ring-paper"
+                class="mx-auto size-40 rounded-full bg-kbs-100 object-cover object-top ring-4 ring-paper"
               >
 
               <div class="mt-5">

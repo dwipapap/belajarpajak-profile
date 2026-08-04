@@ -3,17 +3,16 @@
  * One person in a `/tim` grid: portrait tile, name, role. Not a link — the deck carries no
  * per-person profile and spec §3 reserves no route for one.
  *
- * Resting state is grayscale, matching the reference and the homepage accordion; hovering
- * brings the portrait to full colour and lifts the tile. The colour change is a filter, so
- * it still happens under `prefers-reduced-motion` — only the movement is gated behind
- * `motion-safe`.
+ * The portrait stays in full colour at rest. Hovering lifts the tile and slowly zooms the
+ * photo — the movement is gated behind `motion-safe`, so `prefers-reduced-motion` users get
+ * the lift and the shadow but not the zoom.
  *
  * The zoom runs long (1.2s) on an ease-out-quint curve: it should read as the photo slowly
  * settling forward, not as a snap. Everything else is tuned under it so nothing finishes
  * conspicuously ahead of the zoom.
  *
- * The photo is a placeholder for everyone but the founder (see `app/utils/team.ts`); the
- * alt text names the person the row is about, never the file.
+ * Every portrait is a real cut-out (see `app/utils/team.ts`); the alt text names the
+ * person the row is about, never the file.
  */
 defineProps<{
   name: string
@@ -30,7 +29,7 @@ defineProps<{
         :alt="`Foto ${name}`"
         loading="lazy"
         decoding="async"
-        class="absolute inset-0 size-full object-cover object-top grayscale transition-[filter] duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:grayscale-0 motion-safe:transition-[filter,transform] motion-safe:group-hover:scale-110"
+        class="absolute inset-0 size-full object-cover object-top transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:scale-110"
       >
 
       <!-- Wash toward the page surface, echoing the cut-out portraits of the reference.
