@@ -21,8 +21,12 @@ logs
 # Local agent tooling (skills live outside the repo)
 .agents
 .claude
+.opencode
 opencode.json
 skills-lock.json
+
+# Generated knowledge graph (graphify)
+graphify-out/
 
 # Local env files
 .env
