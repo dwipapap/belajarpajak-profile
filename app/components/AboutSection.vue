@@ -22,16 +22,11 @@ const paragraphs = [
 ]
 
 /**
- * Cropped from the founder portrait on page 3 of the PDF. The usable face region is
- * only ~240px square in the source, so 320 is a mild upscale — do not render it
- * larger than the 160px box below. A high-res original is still worth requesting
- * for Unit 5 (Tim).
+ * The founder card reuses the roster entry rather than restating it — Unit 5 already
+ * staged the 800×1000 cut-out every `/tim` tile uses, so there is exactly one name,
+ * one role and one portrait path for this person in the codebase.
  */
-const founder = {
-  name: 'Dr. Sudarno, S.Pd., M.M., BKP',
-  role: `Founder ${COMPANY.legalName}`,
-  photo: '/team/founder-sudarno.webp'
-}
+const founder = TEAM_LEADERS.find(leader => leader.id === 'founder')!
 </script>
 
 <template>
@@ -59,30 +54,42 @@ const founder = {
         </div>
 
         <div class="lg:col-span-2">
-          <figure class="overflow-hidden rounded-xl border border-kbs-100 bg-kbs-50 shadow-sm">
-            <div class="h-3 bg-kbs-600" />
+          <!-- Portrait tile: one panel, no frame — the caption sits on the photo rather
+               than under it. -->
+          <figure class="group relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-b from-paper to-kbs-100 shadow-lg shadow-kbs-900/10">
+            <img
+              :src="founder.photo"
+              :alt="`Foto ${founder.name}`"
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 size-full object-cover object-top transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:group-hover:scale-105"
+            >
 
-            <div class="px-6 py-8 text-center">
-              <img
-                :src="founder.photo"
-                :alt="`Foto ${founder.name}`"
-                width="800"
-                height="1000"
-                loading="lazy"
-                decoding="async"
-                class="mx-auto size-40 rounded-full bg-kbs-100 object-cover object-top ring-4 ring-paper"
-              >
+            <!-- Scrim: the cut-out fades into a light panel, so the caption needs its own
+                 dark ground to stay legible. -->
+            <span
+              aria-hidden="true"
+              class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-kbs-900/85 via-kbs-900/45 to-transparent"
+            />
 
-              <div class="mt-5">
-                <p class="text-lg font-semibold text-kbs-600">
+            <figcaption class="absolute inset-x-0 bottom-0 flex items-center gap-3 px-6 pb-6">
+              <UIcon
+                name="i-lucide-camera"
+                class="size-5 shrink-0 text-paper/80"
+              />
+
+              <span class="min-w-0">
+                <span class="block text-sm font-semibold italic leading-snug text-paper">
                   {{ founder.name }}
-                </p>
+                </span>
 
-                <p class="mt-1 text-sm text-ink/60">
-                  {{ founder.role }}
-                </p>
-              </div>
-            </div>
+                <span class="mt-0.5 block text-xs italic text-paper/75">
+                  {{ founder.role }} {{ COMPANY.legalName }}
+                </span>
+              </span>
+            </figcaption>
           </figure>
         </div>
       </div>
